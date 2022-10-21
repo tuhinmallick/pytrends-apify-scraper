@@ -1,0 +1,4 @@
+apify-client==0.6.0
+pandas==1.5.1
+XLML==0.1.2
+pytrends==4.8.0

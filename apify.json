@@ -1,0 +1,7 @@
+{
+    "name": "scraper-pytrends",
+    "version": "0.1",
+    "buildTag": "latest",
+    "env": {},
+    "template": "getting_started_python"
+}

@@ -1,0 +1,95 @@
+{
+    "title": "Scrape google trends data",
+    "description": "Input schema for google trends scraping. See https://github.com/GeneralMills/pytrends for more info",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "keywords": {
+            "title": "Search terms",
+            "type": "array",
+            "description": "Array of terms to scrape, max 5, it's advised to use 1 at a time.",
+            "editor": "stringList",
+            "maxItems": 5,
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "timeframe": {
+            "title": "Timeframe",
+            "type": "string",
+            "description": "Timeframe to scrape data for. For example 'today 5-y' will scrape data from today to 5 years ago.",
+            "editor": "textfield",
+            "default": "today 3-m"
+        },
+        "geolocation": {
+            "title": "Geolocation",
+            "type": "string",
+            "description": "What region do you want data from? See ISO3166-2 for more info. Defaults to World.",
+            "editor": "textfield",
+            "default": ""
+        },
+        "category_id": {
+            "title": "Category",
+            "type": "integer",
+            "description": "Limit trends to specific category. See: https://trends.google.com/trends/api/explore/pickers/category?hl=en-US&tz=240",
+            "editor": "number",
+            "default": 0
+        },
+        "interest_low_volume": {
+            "title": "Include low volume?",
+            "type": "boolean",
+            "description": "Include low volume places for interest?",
+            "default": true,
+            "editor": "checkbox"
+        },
+        "interest_include_geo": {
+            "title": "Include geolocation?",
+            "type": "boolean",
+            "description": "Should include geolocation code for interest data?",
+            "default": true,
+            "editor": "checkbox"
+        },
+        "interest_grouping": {
+            "title": "Grouping of interest data",
+            "type": "string",
+            "description": "By what parameter do you want data to be grouped?",
+            "default": "COUNTRY",
+            "editor": "select",
+            "enum": [
+                "COUNTRY",
+                "REGION",
+                "DMA",
+                "CITY"
+            ],
+            "enumTitles": [
+                "Country level data",
+                "Region level data",
+                "Metro level data",
+                "City level data"
+            ]
+        },
+        "get_related_queries": {
+            "title": "Ouput related queries?",
+            "type": "boolean",
+            "description": "Should ouput include related queries?",
+            "default": true,
+            "editor": "checkbox"
+        },
+        "get_related_topics": {
+            "title": "Ouput related topics?",
+            "type": "boolean",
+            "description": "Should ouput include related topics?",
+            "default": true,
+            "editor": "checkbox"
+        },
+        "get_interest_by_region": {
+            "title": "Ouput trend by region?",
+            "type": "boolean",
+            "description": "Should ouput include data by regions?",
+            "default": true,
+            "editor": "checkbox"
+        }
+    },
+    "required": [
+        "keywords"
+    ]
+}
