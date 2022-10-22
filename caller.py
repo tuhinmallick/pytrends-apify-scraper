@@ -34,8 +34,8 @@ def scrape_trends(
         inc_geo_code=interest_include_geo
     ) if get_interest_by_region else DataFrame()
 
-    related_queries = pytrends.related_queries() if get_related_queries else DataFrame()
-    related_topics = pytrends.related_topics() if get_related_topics else DataFrame()
+    related_queries = pytrends.related_queries() if get_related_queries else dict()
+    related_topics = pytrends.related_topics() if get_related_topics else dict()
 
     mapped_related_queries = DataFrame.from_dict(
         related_queries,

@@ -1,3 +1,4 @@
+import json
 import os
 from caller import scrape_trends
 from apify_client import ApifyClient
@@ -50,10 +51,10 @@ if __name__ == '__main__':
 
     print("Data scraper, transforming")
 
-    time_data = result[0].to_dict()
-    interest_data = result[1].to_dict()
-    related_queries = result[2].to_dict()
-    related_topics = result[3].to_dict()
+    time_data = result[0].to_json(orient="records")
+    interest_data = result[1].to_json(orient="records")
+    related_queries = result[2].to_json(orient="records")
+    related_topics = result[3].to_json(orient="records")
 
     print("Returning data")
 
@@ -63,9 +64,9 @@ if __name__ == '__main__':
     # Structure of output is defined in .actor/actor.json
     default_dataset_client.push_items([
         {
-            "time_data": time_data,
-            "interest_data": interest_data,
-            "related_queries": related_queries,
-            "related_topics": related_topics
+            "time_data": json.loads(time_data),
+            "interest_data": json.loads(interest_data),
+            "related_queries": json.loads(related_queries),
+            "related_topics": json.loads(related_topics)
         },
     ])
